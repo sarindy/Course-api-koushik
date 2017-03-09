@@ -1,6 +1,7 @@
 package org.sarindy;
 
-import org.sarindy.topic.CourseModel;
+import org.sarindy.course.TopicModel;
+import org.sarindy.course.TopicRepository;
 import org.sarindy.topic.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,10 +21,10 @@ public class CourseApiKoushikApplication {
 	}
 
 	@Bean
-	CommandLineRunner init(CourseRepository topicRepository) {
+	CommandLineRunner init(TopicRepository topicRepository) {
 		return (args) -> {
-			topicRepository.save(new CourseModel("Java","Programming Open Source"));
-			topicRepository.save(new CourseModel("VB","Programming Microsoft"));
+			topicRepository.save(new TopicModel("Java","Programming Open Source"));
+			topicRepository.save(new TopicModel("VB","Programming Microsoft"));
 		};
 	}
 }
