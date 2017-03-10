@@ -26,6 +26,12 @@ public class CourseService {
 		return courses;
 
 	}
+	
+	public List<CourseModel> getAllCourseService(){
+		List<CourseModel> courses = new ArrayList<>();
+		courseRepository.findAll().forEach(courses::add);
+		return courses;
+	}
 
 	public CourseModel getCourse(Long id) {
 		return courseRepository.findOne(id);

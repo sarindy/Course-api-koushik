@@ -18,10 +18,6 @@ public class Books {
 
     }
 
-    public Books(String name) {
-        this.name = name;
-    }
-
     public Books(String name, BookCategory bookCategory) {
         this.name = name;
         this.bookCategory = bookCategory;

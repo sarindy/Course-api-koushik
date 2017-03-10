@@ -13,9 +13,9 @@ public class TopicService {
 	private TopicRepository topicRepository;
 
 	public List<TopicModel> getAllTopics() {
-		List<TopicModel> topic = new ArrayList<>();
-		topicRepository.findAll().forEach(topic::add);
-		return topic;
+		List<TopicModel> topics = new ArrayList<>();
+		topicRepository.findAll().forEach(topics::add);
+		return topics;
 
 	}
 

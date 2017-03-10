@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/course")
 public class CourseController {
 
 	@Autowired
@@ -22,15 +23,15 @@ public class CourseController {
 		return courseService.getAllCourseByTopicId(id);
 	}
 
-	@RequestMapping(value = "/topic/{topicId}/course/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public CourseModel getCourse(@PathVariable Long id) {
 		return courseService.getCourse(id);
 
 	}
-	
-	@RequestMapping(value="/addCourse/{topicId}",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public CourseModel addCourse(@PathVariable Long topicId,@RequestBody CourseModel course){
-		course.setTopicModel(new TopicModel(topicId,"",""));
+
+	@RequestMapping(value = "/addCourse/{topicId}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public CourseModel addCourse(@PathVariable Long topicId, @RequestBody CourseModel course) {
+		course.setTopicModel(new TopicModel(topicId, "", ""));
 		return courseService.addCourse(course);
 	}
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/", method = RequestMethod.GET)
+@RequestMapping(value = "/topics", method = RequestMethod.GET)
 public class TopicController {
 
 	@Autowired

@@ -1,3 +1,6 @@
+CREATE DATABASE  IF NOT EXISTS dynn;
+USE dynn;
+
 SET foreign_key_checks = 0;
 
 DROP TABLE IF EXISTS Greeting;

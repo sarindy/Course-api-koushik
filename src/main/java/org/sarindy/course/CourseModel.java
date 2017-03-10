@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.sarindy.topic.TopicModel;
 
 @Entity
-@Table(name = "CourseModel")
+@Table(name = "course_model")
 public class CourseModel {
 
 	@Id
@@ -28,7 +28,6 @@ public class CourseModel {
 	@ManyToOne
 	private TopicModel topicModel;
 
-	
 	public TopicModel getTopicModel() {
 		return topicModel;
 	}
@@ -49,26 +48,28 @@ public class CourseModel {
 		return description;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	
-
-	
-
-	public CourseModel(String name, String description,Long topicId) {
+	public CourseModel(String name, String description, Long topicId) {
 
 		this.name = name;
 		this.description = description;
-		this.topicModel = new TopicModel(topicId,"","");
-	
+		this.topicModel = new TopicModel(topicId, "", "");
+
 	}
-	
+
 	public CourseModel() {
 
 	}
-	
-	
 
 }

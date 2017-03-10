@@ -11,61 +11,53 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="book_category")
+@Table(name = "book_category")
 public class BookCategory {
-	
-	 private int id;
-	    private String name;
-	    private Set<Books> books;
 
-	    public BookCategory(){
+	private int id;
+	private String name;
+	private Set<Books> books;
 
-	    }
+	public BookCategory(String name) {
+		this.name = name;
+	}
 
-	    public BookCategory(String name) {
-	        this.name = name;
-	    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public int getId() {
+		return id;
+	}
 
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    public int getId() {
-	        return id;
-	    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	    public void setId(int id) {
-	        this.id = id;
-	    }
+	public String getName() {
+		return name;
+	}
 
-	    public String getName() {
-	        return name;
-	    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	    public void setName(String name) {
-	        this.name = name;
-	    }
+	@OneToMany(mappedBy = "bookCategory", cascade = CascadeType.ALL) 
+	public Set<Books> getBooks() {
+		return books;
+	}
 
-	    @OneToMany(mappedBy = "bookCategory", cascade = CascadeType.ALL) //bookCatogory property in Book Class
-	    public Set<Books> getBooks() {
-	        return books;
-	    }
+	public void setBooks(Set<Books> books) {
+		this.books = books;
+	}
 
-	    public void setBooks(Set<Books> books) {
-	        this.books = books;
-	    }
+	@Override
+	public String toString() {
+		String result = String.format("Category[id=%d, name='%s']%n", id, name);
+		if (books != null) {
+			for (Books book : books) {
+				result += String.format("Book[id=%d, name='%s']%n", book.getId(), book.getName());
+			}
+		}
 
-	    @Override
-	    public String toString() {
-	        String result = String.format(
-	                "Category[id=%d, name='%s']%n",
-	                id, name);
-	        if (books != null) {
-	            for(Books book : books) {
-	                result += String.format(
-	                        "Book[id=%d, name='%s']%n",
-	                        book.getId(), book.getName());
-	            }
-	        }
-
-	        return result;
-	    }
+		return result;
+	}
 }
