@@ -28,6 +28,7 @@ public class CourseModel {
 	@ManyToOne
 	private TopicModel topicModel;
 
+	
 	public TopicModel getTopicModel() {
 		return topicModel;
 	}
